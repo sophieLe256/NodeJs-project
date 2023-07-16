@@ -34,7 +34,7 @@ class AuthController {
         return res.status(500).json(err);
       } else if (data && data.length > 0) {
         const rawPassword = req.body.Password;
-        const hashPassword = data && data[0]?.Password;
+        const hashPassword = data && data[0] && data[0].Password;
         const isSame = bcrypt.compareSync(rawPassword, hashPassword);
         if (isSame) {
           delete data[0].Password;
