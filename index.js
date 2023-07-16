@@ -1,9 +1,13 @@
-const express = require("express");
-const route = require("./src/routes");
+import express from "express";
+import route from "./routes/index.js";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 route(app);
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World from Update!");
